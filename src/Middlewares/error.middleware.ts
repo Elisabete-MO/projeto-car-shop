@@ -2,6 +2,8 @@ import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
 
 export enum ErrorTypes {
   NoCarsFound = 'NoCarsFound',
+  CarNotFound = 'CarNotFound',
+  InvalidId = 'InvalidId',
 }
 
 export enum HttpCodesCatalog {
@@ -27,6 +29,14 @@ export const errorCatalog: ErroCatalog = {
   NoCarsFound: {
     message: 'No cars found',
     httpStatus: HttpCodesCatalog.NOT_FOUND,
+  },
+  CarNotFound: {
+    message: 'Car not found',
+    httpStatus: HttpCodesCatalog.NOT_FOUND,
+  },
+  InvalidId: {
+    message: 'Invalid mongo id',
+    httpStatus: HttpCodesCatalog.UNPROCESSABLE_CONTENT,
   },
 };
 

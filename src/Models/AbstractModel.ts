@@ -15,6 +15,10 @@ abstract class AbstractODM<T> {
     return this.model.find();
   }
 
+  public async getById(id: string): Promise<T | null> {
+    return this.model.findById(id);
+  }
+  
   public async create(obj: T): Promise<T> {
     return this.model.create({ ...obj });
   }

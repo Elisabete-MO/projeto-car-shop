@@ -23,6 +23,13 @@ export default class CarService {
     return result;
   }
 
+  public async getById(id: string) {
+    const carODM = new CarModel();
+    const car = await carODM.getById(id);
+    if (!car) throw new Error('CarNotFound');
+    return this.createCarDomain(car);
+  }
+
   public async create(car: ICar) {
     const carModel = new CarModel();
     const newcar = await carModel.create(car);

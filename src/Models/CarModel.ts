@@ -15,14 +15,6 @@ class CarModel extends Abstract<ICar> {
     });
     super(schema, 'Car');
   }
-
-  // public async findAll(): Promise<ICar[]> {
-  //   return this.model.find();
-  // }
-
-  // public async create(car: ICar): Promise<ICar> {
-  //   return this.model.create({ ...car });
-  // }
 }
 
 export default CarModel;
