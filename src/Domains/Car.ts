@@ -1,43 +1,14 @@
-class Car {
-  private value: string;
-  private owner: string;
-  private type: string;
-  private id: string | undefined;
+import ICar from '../Interfaces/ICar';
+import Vehicle from './Vehicle';
 
-  constructor(
-    value: string,
-    owner: string,
-    type: string,
-    id: string | undefined,
-  ) {
-    this.value = value;
-    this.owner = owner;
-    this.type = type;
-    this.id = id;
-  }
+class Car extends Vehicle {
+  private doorsQty: number;
+  private seatsQty: number;
 
-  public getValue() {
-    return this.value;
-  }
-
-  public setValue(value: string) {
-    this.value = value;
-  }
-
-  public getOwner() {
-    return this.owner;
-  }
-
-  public setOwner(carOwner: string) {
-    this.owner = carOwner;
-  }
-
-  public getType() {
-    return this.type;
-  }
-
-  public setType(type: string) {
-    this.type = type;
+  constructor(car : ICar) {
+    super(car);
+    this.doorsQty = car.doorsQty;
+    this.seatsQty = car.seatsQty;
   }
 }
 

@@ -1,8 +1,8 @@
-interface ICar {
-  id?: string;
-  value: string;
-  owner: string;
-  type: string;
+import IVehicle from './IVehicle';
+
+interface ICar extends IVehicle{
+  doorsQty: number;
+  seatsQty: number;
 }
 
 export default ICar;
