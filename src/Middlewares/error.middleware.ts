@@ -3,6 +3,9 @@ import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
 export enum ErrorTypes {
   NoCarsFound = 'NoCarsFound',
   CarNotFound = 'CarNotFound',
+  InvalidMotoType = 'InvalidMotoType',
+  NoMotosFound = 'NoMotosFound',
+  MotoNotFound = 'MotoNotFound',
   InvalidId = 'InvalidId',
 }
 
@@ -32,6 +35,18 @@ export const errorCatalog: ErroCatalog = {
   },
   CarNotFound: {
     message: 'Car not found',
+    httpStatus: HttpCodesCatalog.NOT_FOUND,
+  },
+  InvalidMotoType: {
+    message: 'Invalid moto type',
+    httpStatus: HttpCodesCatalog.BAD_REQUEST,
+  },
+  NoMotosFound: {
+    message: 'No motocycles found',
+    httpStatus: HttpCodesCatalog.NOT_FOUND,
+  },
+  MotoNotFound: {
+    message: 'Motorcycle not found',
     httpStatus: HttpCodesCatalog.NOT_FOUND,
   },
   InvalidId: {

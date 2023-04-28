@@ -23,9 +23,9 @@ abstract class AbstractODM<T> {
     return this.model.create({ ...obj });
   }
 
-  public async update(_id: string, obj: Partial<T>): Promise<T | null> {
+  public async update(id: string, obj: Partial<T>): Promise<T | null> {
     return this.model.findByIdAndUpdate(
-      { _id },
+      { _id: id },
       { ...obj } as UpdateQuery<T>,
       { new: true },
     );
