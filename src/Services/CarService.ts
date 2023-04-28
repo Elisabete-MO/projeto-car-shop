@@ -35,4 +35,13 @@ export default class CarService {
     const newcar = await carModel.create(car);
     return this.createCarDomain(newcar);
   }
+
+  public async update(id: string, car: ICar) {
+    if (await this.getById(id)) {
+      const carModel = new CarModel();
+      const upCar = await carModel.update(id, car);
+      return this.createCarDomain(upCar);
+    }
+    throw new Error('carNotFound');
+  }
 }
