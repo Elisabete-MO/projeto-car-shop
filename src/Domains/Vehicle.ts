@@ -8,7 +8,7 @@ class Vehicle {
   protected status?:boolean;
   protected buyValue: number;
 
-  constructor(vehicle : IVehicle) {
+  constructor(vehicle: IVehicle) {
     this.id = vehicle.id;
     this.model = vehicle.model;
     this.year = vehicle.year;

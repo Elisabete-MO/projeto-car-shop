@@ -1,47 +1,21 @@
 import CarModel from '../Models/CarModel';
 import Car from '../Domains/Car';
 import ICar from '../Interfaces/ICar';
+import VehicleService from './VehicleService';
 
-export default class CarService { 
-  // constructor(private _model = new CarModel()) {}
-  // const newcar = await this._model.create(car);
-
-  private createCarDomain(car: ICar | null): Car | null {
+class CarService extends VehicleService<ICar> {
+  // constructor(private _model = new MotoModel()) {}
+  // const newmoto = await this._model.create(moto);
+  constructor() {
+    super(new CarModel());
+  }
+  
+  protected createDomain(car: ICar | null): Car | null {
     if (car) {
       return new Car(car);
     }
     return null;
   }
-
-  public async getAll() {
-    const carODM = new CarModel();
-    const cars = await carODM.getAll();
-
-    if (!cars) throw new Error('NoCarsFound');
-
-    const result = cars.map((car) => this.createCarDomain(car));
-    return result;
-  }
-
-  public async getById(id: string) {
-    const carODM = new CarModel();
-    const car = await carODM.getById(id);
-    if (!car) throw new Error('CarNotFound');
-    return this.createCarDomain(car);
-  }
-
-  public async create(car: ICar) {
-    const carModel = new CarModel();
-    const newcar = await carModel.create(car);
-    return this.createCarDomain(newcar);
-  }
-
-  public async update(id: string, car: ICar) {
-    if (await this.getById(id)) {
-      const carModel = new CarModel();
-      const upCar = await carModel.update(id, car);
-      return this.createCarDomain(upCar);
-    }
-    throw new Error('carNotFound');
-  }
 }
+
+export default CarService;
