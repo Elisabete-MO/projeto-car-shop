@@ -14,7 +14,10 @@ export default abstract class VehicleService<T> {
   public async getAll() {
     const vehicles = await this._model.getAll();
 
-    if (!vehicles) throw new Error('NoVehiclesFound');
+    if (!vehicles) {
+      if (this._model instanceof CarModel) throw new Error('NoCarsFound');
+      throw new Error('NoMotosFound');
+    }
 
     const result = vehicles.map((vehicle: T) => this.createDomain(vehicle));
     return result;
