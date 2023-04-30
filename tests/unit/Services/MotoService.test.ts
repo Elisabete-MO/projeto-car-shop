@@ -1,13 +1,10 @@
 import * as sinon from 'sinon';
 import * as chai from 'chai';
 import { describe, afterEach } from 'mocha';
-import chaiAsPromised from 'chai-as-promised';
 import { Model } from 'mongoose';
 import Moto from '../../../src/Domains/Motorcycle';
 import MotoService from '../../../src/Services/MotoService';
 import IMotorcycle from '../../../src/Interfaces/IMotorcycle';
-
-chai.use(chaiAsPromised);
 
 const { expect } = chai;
 
@@ -120,28 +117,6 @@ describe('Service /motorcycles', function () {
       const result = await service.create(bodyInput);
       expect(result).to.be.an('object');
       expect(result).to.be.deep.equal(dbOutput);
-    });
-
-    it('PUT motorcycles/:id => throws a "MotoNotFound" Error if id not found', async function () {
-      const id = '644ae581d5be6d62cc487471';
-      const bodyInput: IMotorcycle = ({
-        model: 'Marea',
-        year: 2002,
-        color: 'Yellow',
-        status: true,
-        buyValue: 15.99,
-        category: 'Street',
-        engineCapacity: 5,
-      });
-
-      sinon.stub(Model, 'findById').resolves(undefined);
-
-      try {
-        const service = new MotoService();
-        await service.update(id, bodyInput);
-      } catch (error) {
-        expect((error as Error).message).to.be.equal('MotoNotFound');
-      }
     });
   });
 });

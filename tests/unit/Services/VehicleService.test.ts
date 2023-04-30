@@ -1,12 +1,9 @@
 import * as sinon from 'sinon';
 import * as chai from 'chai';
 import { describe, afterEach } from 'mocha';
-import chaiAsPromised from 'chai-as-promised';
 import { Model } from 'mongoose';
 import CarService from '../../../src/Services/CarService';
 import MotoService from '../../../src/Services/MotoService';
-
-chai.use(chaiAsPromised);
 
 const { expect } = chai;
 

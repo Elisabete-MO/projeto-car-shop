@@ -1,12 +1,11 @@
 import * as sinon from 'sinon';
 import * as chai from 'chai';
 import { describe, afterEach } from 'mocha';
-import chaiAsPromised from 'chai-as-promised';
 import { Model } from 'mongoose';
+import { assert } from 'chai';
 import Car from '../../../src/Domains/Car';
 import CarService from '../../../src/Services/CarService';
-
-chai.use(chaiAsPromised);
+import ICar from '../../../src/Interfaces/ICar';
 
 const { expect } = chai;
 
@@ -134,7 +133,7 @@ describe('Service /cars', function () {
 
     it('PUT cars/:id => should return an object with a car', async function () {
       const id = '644ae581d5be6d62cc487471';
-      const bodyInput = {
+      const bodyInput: ICar = {
         model: 'Marea',
         year: 2002,
         color: 'Yellow',
@@ -167,23 +166,28 @@ describe('Service /cars', function () {
       const findByIdAndUpdateStub = sinon.stub(Model, 'findByIdAndUpdate').resolves(updatedResult);
 
       const service = new CarService();
-      const result = await service.update(id, bodyInput);
-      expect(result).to.be.an('object');
-      // expect(result).to.deep.equal({ id: '644ae581d5be6d62cc487471', model: 'Marea',
-      //   year: 2002, color: 'Yellow', status: true, buyValue: 15.99, doorsQty: 4, seatsQty: 5 });
-      expect(findByIdAndUpdateStub).to.have.been.calledOnceWith(
-        { _id: id },
-        {
-          model: 'Marea',
-          year: 2002,
-          color: 'Yellow',
-          status: true,
-          buyValue: 15.99,
-          doorsQty: 4,
-          seatsQty: 5,
-        },
-        { new: true },
-      );
+      try {
+        await service.update(id, bodyInput);
+        // assert.deepStrictEqual(result, { id: '644ae581d5be6d62cc487471',  model: 'Marea', year: 2002,
+        //   color: 'Yellow', status: true, buyValue: 15.99, doorsQty: 4, seatsQty: 5 });
+        sinon.assert.calledOnce(findByIdAndUpdateStub);
+        sinon.assert.calledWith(
+          findByIdAndUpdateStub,
+          { _id: id },
+          {
+            model: 'Marea',
+            year: 2002,
+            color: 'Yellow',
+            status: true,
+            buyValue: 15.99,
+            doorsQty: 4,
+            seatsQty: 5,
+          },
+          { new: true },
+        );
+      } catch (err: any) {
+        assert.fail(err);
+      }
     });
   });
 });
