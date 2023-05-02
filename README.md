@@ -1,13 +1,18 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+# :car: Projeto Car Shop :motorcycle: 
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+(individual - data de entrega 05/05/2023)
+
+Desenvolvi essa API para gerenciar uma concessionária de veículos utilizando TypeScript, seguindo a arquitetura MSC e os pilares da Programação Orientada a Objetos e o ODM Mongoose para conectar com um banco de dados MongoDB.
+
+Foi muito importante aplicar esses conhecimentos adquiridos, pois uma API bem estruturada e seguindo os princípios de POO, facilita tanto a escalabilidade quanto a manutenção da aplicação. Além disso, durante o desenvolvimento, me preocupei em criar uma API que pudesse crescer ou passar por mudanças sem que fosse necessária uma mudança estrutural em toda aplicação.
+
+Os objetivos desse projeto foram:
+
+ -  :blue_car: desenvolver uma API bem estruturada e seguindo os princípios de POO, a fim de facilitar tanto a escalabilidade quanto sua manutenção;
+ -  :motor_scooter: exercitar os pilares da Programação Orientada a Objetos, como Herança, Abstração, Encapsulamento e Polimorfismo, além de utilizar Composição e Interfaces;   
+ -  :oncoming_automobile: implementar Classes, Instâncias, Atributos, Métodos e Objetos em TypeScript;
+ -  :red_car:	utilizar as ferramentas Chai, Mocha e Sinon para criar testes unitários da aplicação.
+
+:rotating_light: - as pastas `src` e `tests/unit` contem os arquivos desenvolvidos por mim. As demais pastas contem arquivos desenvolvidos pela Trybe.
+>Este é um projeto do curso de Desenvolvimento Web Full Stack da Trybe. :rocket: :green_heart:
